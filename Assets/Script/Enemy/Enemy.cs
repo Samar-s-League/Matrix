@@ -9,9 +9,11 @@ public class Enemy : MonoBehaviour
     public float health ;
     public float speed ; 
 
-    [Header("Buff管理")]
-    List<Buff> buffs = new List<Buff>();
+    public int deadExp ; 
 
+    public List<string> buffs = new List<string>();
+
+    //public Dictionary<string , GameObject> buffs = new Dictionary<string, GameObject>();
     void Start()
     {
         
@@ -19,19 +21,24 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        
+        // 测试Enemy获得buff
+        if(Input.GetKeyDown(KeyCode.O)){
+            getBuff("灼烧");
+        }
     }
 
-    public void addBuff(Buff buff){
-        if(buffs.Contains(buff)){
-            
+    public void getBuff(string buffName){
+        if(buffs.Contains(buffName)){
+            // 拥有则刷新
         }else{
-            buffs.Add(buff);
+            Debug.Log("给予"+this+"   "+buffName);
+            BuffManager.Instance.giveBuff(this,buffName);
         }
     }
 
     public void getDamage(float _damage){
         health -= _damage ; 
+        checkDeath();
     }
 
     public void checkDeath(){
@@ -42,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void Death(){
         Debug.Log("死亡："+this.gameObject );
+        GameManager.Instance.addExpToPlayer(deadExp);
         Destroy(gameObject);
     }
 }

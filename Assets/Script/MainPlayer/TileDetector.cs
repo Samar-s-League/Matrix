@@ -16,8 +16,7 @@ public class TileDetector : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("1231d1");
-        if(other.CompareTag("Grid"))
+        if(other.CompareTag("Land"))
         {
                 tile = other.gameObject;
                 canGet = true ;
@@ -27,9 +26,7 @@ public class TileDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("1231d1");
-
-        if (other.CompareTag("Grid"))
+        if (other.CompareTag("Land"))
         {
                 tile = null;
                 canGet = false;

@@ -5,14 +5,16 @@ using UnityEngine;
 // 所有子弹的父类
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Transform target ; 
+
+    public void setTarget(Transform _target){
+        this.target = _target;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    private void Update()
     {
         
     }

@@ -11,12 +11,17 @@ public abstract class Buff : MonoBehaviour
     public int MaxCount ; //触发次数
     public int Count ; //触发次数
 
-    public Buff(int _MaxCount){
-        this.MaxCount = _MaxCount; 
-        this.Count = _MaxCount ; 
-        this.Timer = 0.1f ;
+    // 第一次的倒计时是0.1f,这样可以立刻触发
+    // 默认每秒触发一次
+
+    // public Buff(int _MaxCount){
+    //     this.MaxCount = _MaxCount; 
+    //     this.Count = _MaxCount ; 
+    //     this.Timer = 0.1f ;
+    // }
+    public void setEnemy(Enemy _enemy){
+        this.enemy = _enemy;
     }
-    
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -31,6 +36,15 @@ public abstract class Buff : MonoBehaviour
                 Count--;
                 Timer = 1.01f;
             }
+            Debug.Log("[BUFF]:" + Count +"   Time:"+Timer);
+
+        }else{
+            //结束buff
+            endBuff();
+            // enemy.removeBuff(this);
+            BuffManager.Instance.removeBuffFromUsingList(this.gameObject);
+            Debug.Log("Buff结束");
+            Destroy(gameObject);
         }
     }
 
@@ -40,4 +54,5 @@ public abstract class Buff : MonoBehaviour
     }
 
     public abstract void useBuff(); // 触发buff 
+    public abstract void endBuff(); // 触发buff 
 }

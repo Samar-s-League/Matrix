@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Header("升级")]
+    public int level ; 
+    public int exp ; 
+
+    public int exptoNextLevel ; 
+
+    public int buildItem ; //每次升级玩家会获得一定数量的晶核。剩余晶核数显示在屏幕下方。具体获得数量见下表：
+
     [Header("Detectors")]
     [SerializeField] private float X_offset;
     [SerializeField] private float Y_offset;
@@ -81,6 +89,17 @@ public class PlayerControl : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void addExp(int exp){
+        this.exp += exp ; 
+        if(exp >= exptoNextLevel){
+            levelUp();
+        }
+    }
+
+    public void levelUp(){
+        //升级部分
     }
 
     public bool MoveInTile()
