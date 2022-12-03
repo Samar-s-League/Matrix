@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public float WinTimer ; 
     public PlayerControl player ; 
     public bool isCreateLand ;
     public bool isBuildingTower = true ; //任意时间都可以建
@@ -27,9 +28,38 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private void Update()
     {
+        if(WinTimer <= 0.01f){
+            WinGame();
+        }else{
+            WinTimer -= Time.deltaTime;
+        }
+
         // 测试
         if(Input.GetKeyDown(KeyCode.E)){
             EnterBuildMode();
+        }
+
+        if(isBuildingTower){
+                if(Input.GetMouseButtonDown(0)){
+                    Debug.Log("1");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero,20,1 << 6);             
+
+                // 建造防御塔   
+                if(hit.collider != null){
+                    Debug.Log("2");
+                    GameObject temp = hit.collider.gameObject;
+                    Debug.Log("2.5"+temp.name);
+                    if(temp.tag.Equals("Land") && player.buildItem >= 1){
+                        //选择地区防御塔
+                        choseTile = temp ; 
+                        EnterBuildTower();
+                        Debug.Log("3");
+                    }
+                }
+
+                player.FreshDectors();
+            }
         }
 
         if(isCreateLand){
@@ -59,28 +89,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        if(isBuildingTower){
-                if(Input.GetMouseButtonDown(0)){
-                    Debug.Log("1");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero,20,1 << 6);             
 
-                // 建造防御塔   
-                if(hit.collider != null){
-                    Debug.Log("2");
-                    GameObject temp = hit.collider.gameObject;
-                    Debug.Log("2.5"+temp.name);
-                    if(temp.tag.Equals("Land") && player.buildItem >= 1){
-                        //选择地区防御塔
-                        choseTile = temp ; 
-                        EnterBuildTower();
-                        Debug.Log("3");
-                    }
-                }
-
-                player.FreshDectors();
-            }
-        }
 
     }
 
@@ -89,6 +98,7 @@ public class GameManager : Singleton<GameManager>
         isBuildingTower = false ; 
         Time.timeScale = 0.0f;
         createCount = 2 ;
+        Debug.Log("进入扩地阶段");
     }
 
     public void ExitBuildMode(){
@@ -96,17 +106,20 @@ public class GameManager : Singleton<GameManager>
         isBuildingTower = true ; 
         Time.timeScale = 1.0f;
         createCount = 2 ;
+        Debug.Log("离开扩地阶段");
     }
 
     public void EnterBuildTower(){
         isCreateLand = false ; 
         Time.timeScale = 0.0f;
         TowerUI.SetActive(true);
+        Debug.Log("进入建造阶段");
     }
 
     public void ExitBuildTower(){ 
         Time.timeScale = 1.0f;
         TowerUI.SetActive(false);
+        Debug.Log("离开建造阶段");
     }
 
     public void BuildTower(int _tower){
@@ -149,5 +162,13 @@ public class GameManager : Singleton<GameManager>
     
     public void registerGrid(Grid grid){
         grids.Add(grid);
+    }
+
+    public void GameOver(){
+        
+    }
+
+    public void WinGame(){
+        Debug.Log("游戏胜利");
     }
 }

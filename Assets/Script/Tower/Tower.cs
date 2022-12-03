@@ -25,6 +25,11 @@ public class Tower : MonoBehaviour
         }else{
             attackTimer -= Time.deltaTime;
         }
+
+        if(target == null){
+            gameObject.GetComponent<Collider2D>().enabled = false ; 
+            gameObject.GetComponent<Collider2D>().enabled = true ; 
+        }
     }
 
     private void attackEnemy(){

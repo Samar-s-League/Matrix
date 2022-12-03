@@ -27,7 +27,8 @@ public class DamageBuff : Buff
     }
 
     public override void endBuff(){
-            Debug.Log(enemy+" 结束buff "+this);
+        Debug.Log(enemy+" 结束buff "+this);
+        enemy.removeExitBuffString("灼烧");
         enemy.GetComponent<SpriteRenderer>().color  = new Color(255,255,255);
     }
 }

@@ -116,7 +116,7 @@ MonoBehaviour:
   Bullet: {fileID: 0}
   attackCD: 0.5
   target: {fileID: 0}
-  attackDamage: 60
+  attackDamage: 3
 --- !u!50 &7618839291765313939
 Rigidbody2D:
   serializedVersion: 4

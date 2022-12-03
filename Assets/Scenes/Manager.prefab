@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3815681157803961880}
   - component: {fileID: 83738150921806566}
+  - component: {fileID: 1814721095207876865}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1beda97d8f5b244b0dbf35067c8c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WinTimer: 0
   player: {fileID: 0}
   isCreateLand: 0
   isBuildingTower: 1
@@ -101,3 +103,15 @@ MonoBehaviour:
   "\u51B0": {fileID: 7618839291765313942, guid: 39cdcd4a64b9aeb49a7d2dc79903d444, type: 3}
   "\u6BD2": {fileID: 5120838204212464394, guid: 82bd9e6acc6111348a9497ebf1afd290, type: 3}
   grids: []
+--- !u!114 &1814721095207876865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815681157803961881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a3e484e15e44442b8db1fa3d99b2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

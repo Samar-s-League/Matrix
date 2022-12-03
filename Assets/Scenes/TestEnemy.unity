@@ -9787,10 +9787,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a72aa098ac5be41b01bc818c327dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 5
+  health: 9999
+  speed: 0
   deadExp: 0
   player: {fileID: 0}
+  hurtPlayer: 0
   buffs: []
 --- !u!61 &1686021931
 BoxCollider2D:
@@ -12852,3 +12853,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83ae3a24c1eb7884db3805ce9fd68622, type: 3}
+--- !u!1001 &7361276567531091053
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_RootOrder
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.9499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346891, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634215916022346895, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}
+      propertyPath: m_Name
+      value: PlayerTower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6b499e28a8815d4c95319f17dd1376d, type: 3}

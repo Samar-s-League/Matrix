@@ -41,21 +41,23 @@ public class BuffManager : Singleton<BuffManager>
     //     Debug.Log("[BuffSys]给予"+enemy+"  "+buffName);
     // }
     public void giveBuff(Enemy enemy , string buffName ){
-        if(enemy.buffs.Contains(buffName)){
-            //有的话就刷新
-        }else{
-            // 没有就新增
-            GameObject tempBuff = GameObject.Instantiate(allBuffs[buffName],this.transform);
-            tempBuff.GetComponent<Buff>().setEnemy(enemy);
-            usingBuff.Add(tempBuff);
-            enemy.buffs.Add(buffName);
+        GameObject tempBuff = GameObject.Instantiate(allBuffs[buffName],this.transform);
+        tempBuff.GetComponent<Buff>().setEnemy(enemy);
 
+        if(enemy.buffs.Contains(tempBuff)){
+            //有的话就刷新
+            enemy.buffs.Remove(tempBuff);
+            usingBuff.Remove(tempBuff);
         }
+            usingBuff.Add(tempBuff);
+            enemy.buffs.Add(tempBuff);
+        
 
     }
 
     public void removeBuffFromUsingList(GameObject buff){
         usingBuff.Remove(buff);
+        
     }
 
     public void removeBuff(Enemy enemy , Buff buff){
