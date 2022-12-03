@@ -13,6 +13,7 @@ public class Tower : MonoBehaviour
 
     [Header("攻击设置")]
     public float attackDamage ; 
+    public AudioSource audio;
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -33,6 +34,7 @@ public class Tower : MonoBehaviour
     }
 
     private void attackEnemy(){
+        audio.Play();
         target.GetComponent<SpriteRenderer>().color = new Color(255,125,0);
         target.GetComponent<Enemy>().getDamage(attackDamage);
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public static PlayerControl instance ; 
+    public AudioSource playerHit ; 
 
     [Header("基础属性")]
     public int health ;
@@ -112,6 +113,7 @@ public class PlayerControl : MonoBehaviour
     public void PlayerHurt(){
         if(!isDef){
             health--;
+            playerHit.Play();
             isDef = true ;
             DefTimer = 3.0f ;
 
