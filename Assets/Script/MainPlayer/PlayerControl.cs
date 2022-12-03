@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public static PlayerControl instance ; 
+
     [Header("升级")]
     public int level ; 
     public int exp ; 
@@ -37,6 +39,17 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        if(instance == null ){
+            instance = this ;
+            //设置instance
+        }else{
+            if(instance != this){
+                Destroy(gameObject);
+            }
+        }
+
+        DontDestroyOnLoad(gameObject);  
+
         detectors.Add(up);
         detectors.Add(down);
         detectors.Add(left);
@@ -100,6 +113,14 @@ public class PlayerControl : MonoBehaviour
 
     public void levelUp(){
         //升级部分
+        if(level <30){
+            buildItem += 2;
+        }else if(level >=31 && level <50){
+            buildItem += 3 ;
+        }else{
+            buildItem += 4 ;
+        }
+        GameManager.Instance.EnterBuildMode();
     }
 
     public bool MoveInTile()

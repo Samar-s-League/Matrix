@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
         if(isCreateLand){
             if(Input.GetMouseButtonDown(0)){
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);             
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero,20,1 << 6);             
                 
                 //建造模式
                     if(hit.collider != null){
@@ -61,16 +61,20 @@ public class GameManager : Singleton<GameManager>
 
         if(isBuildingTower){
                 if(Input.GetMouseButtonDown(0)){
+                    Debug.Log("1");
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);             
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero,20,1 << 6);             
 
                 // 建造防御塔   
                 if(hit.collider != null){
+                    Debug.Log("2");
                     GameObject temp = hit.collider.gameObject;
+                    Debug.Log("2.5"+temp.name);
                     if(temp.tag.Equals("Land") && player.buildItem >= 1){
                         //选择地区防御塔
                         choseTile = temp ; 
                         EnterBuildTower();
+                        Debug.Log("3");
                     }
                 }
 
@@ -82,48 +86,56 @@ public class GameManager : Singleton<GameManager>
 
     public void EnterBuildMode(){
         isCreateLand = true ; 
+        isBuildingTower = false ; 
         Time.timeScale = 0.0f;
         createCount = 2 ;
     }
 
     public void ExitBuildMode(){
         isCreateLand = false ;
+        isBuildingTower = true ; 
         Time.timeScale = 1.0f;
         createCount = 2 ;
     }
 
     public void EnterBuildTower(){
+        isCreateLand = false ; 
         Time.timeScale = 0.0f;
         TowerUI.SetActive(true);
     }
 
-    public void ExitBuildTower(){
+    public void ExitBuildTower(){ 
         Time.timeScale = 1.0f;
         TowerUI.SetActive(false);
     }
 
     public void BuildTower(int _tower){
         if(choseTile != null){
+            Vector3 locatiob = new Vector3(choseTile.transform.position.x,choseTile.transform.position.y,choseTile.transform.position.z);
             switch(_tower){
                 case 1 :
-                    GameObject.Instantiate(炎,choseTile.transform);
+                    GameObject.Instantiate(炎,locatiob,Quaternion.identity);
+                    player.buildItem -= 1 ;
                     break;
 
                 case 2 :
-                    GameObject.Instantiate(电,choseTile.transform);
+                    GameObject.Instantiate(电,locatiob,Quaternion.identity);
+                    player.buildItem -= 1 ;
                     break;                
                     
                 case 3 :
-                    GameObject.Instantiate(冰,choseTile.transform);
+                    GameObject.Instantiate(冰,locatiob,Quaternion.identity);
+                    player.buildItem -= 1 ;
                     break;                
                     
                 case 4 :
-                    GameObject.Instantiate(毒,choseTile.transform);
+                    GameObject.Instantiate(毒,locatiob,Quaternion.identity);
+                    player.buildItem -= 1 ;
                     break;
 
                 default:
                     Debug.Log("错误按键");
-                    GameObject.Instantiate(炎,choseTile.transform);
+                    GameObject.Instantiate(炎,locatiob,Quaternion.identity);
                     break;
 
             }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public GameObject setCenter;
-    public int Size; // n x n ��С��n
+    public int Size; // n x n 
     public float offest; 
 
     private void Start()

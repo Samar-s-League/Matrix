@@ -91,3 +91,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  isCreateLand: 0
+  isBuildingTower: 1
+  TowerUI: {fileID: 0}
+  createCount: 0
+  choseTile: {fileID: 0}
+  "\u708E": {fileID: 1273129471331414950, guid: 29e4f9d6fb6e26542bee893a4618d8e4, type: 3}
+  "\u7535": {fileID: 8107997473722755209, guid: 83ae3a24c1eb7884db3805ce9fd68622, type: 3}
+  "\u51B0": {fileID: 7618839291765313942, guid: 39cdcd4a64b9aeb49a7d2dc79903d444, type: 3}
+  "\u6BD2": {fileID: 5120838204212464394, guid: 82bd9e6acc6111348a9497ebf1afd290, type: 3}
+  grids: []
