@@ -39,6 +39,18 @@ public class EnemyDoor : MonoBehaviour
         if(i == 3){
             GameObject.Instantiate(EneC,location,Quaternion.identity);
         }
+
+        randOffest();
+    }
+
+    private void randOffest(){
+        float Offesty = Random.Range(-10,10);
+        float Offestx = Random.Range(-5,5);
+        transform.position = new Vector3(transform.position.x + Offestx , transform.position.y+Offesty,transform.position.z );
+
+        Offesty = Random.Range(-3,3);
+        Offestx = Random.Range(-3,3);
+        location =  new Vector3(transform.position.x + Offestx , transform.position.y+Offesty,transform.position.z );
     }
 
 

@@ -164,6 +164,10 @@ public class GameManager : Singleton<GameManager>
         grids.Add(grid);
     }
 
+    public float getWintime(){
+        return WinTimer;
+    }
+
     public void GameOver(){
         
     }
